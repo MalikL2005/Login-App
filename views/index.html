@@ -6,9 +6,10 @@
 <body>
     <h1 id="h1">Welcome to my website</h1>
     <p>My name is Malik and I am looking to get into Web-Dev.</p>
+    <p>This is a test-project: Users are stored in a DataBase. They can be queried, added, removed, ...</p>
     <br>
     <h2>Make a DataBase-Query</h2>
-    <p>Type in a name to get it from the db.</p>
+    <p>Type in a name to get it from the DB.</p>
     <form action="/getUsers" method="GET">
         <label for="name">Name: </label>
         <input type="text" id="name" name="name">
@@ -16,6 +17,28 @@
     <h2>View all users</h2>
     <form action="/users" method="GET">
         <button id="users_button">Click here to see all users.</button>
+    </form>
+    <h2>Sign up</h2>
+    <form action="/add_user" method="POST" enctype="application/x-www-form-urlencoded">
+        <label for="new_name">Name: </label>
+        <input type="text" id="new_name" name="new_name" required>
+        <br>
+        <label for="new_email">Email: </label>
+        <input type="text" id="new_email" name="new_email" required>
+        <br>
+        <label for="new_pw">Password: </label>
+        <input type="password" id="new_pw" name="new_pw" required>
+        <br>
+        <button>Add User</button>
+    </form>
+    <h2>Type in a name to remove user from the DB</h2>
+    <form action="/remove_user" method="POST">
+        <label for="remove_user_name">Name: </label>
+        <input type="name" id="remove_user_name" name="remove_user_name">
+    </form> 
+    <h2>Sign in</h2>
+    <form action="/sign_in">
+    <button id="go_to_sign_in" action="sign_in.html">Sign in</button>
     </form>
 </body>
 </html>

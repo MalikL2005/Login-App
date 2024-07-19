@@ -64,16 +64,6 @@ app.post('/add_user', async (req, res)=>{
 })
 
 
-app.post('/remove_user', (req, res)=>{
-    console.log(req.body.remove_user_name)
-    try{
-        collection.deleteOne({'name': req.body.remove_user_name})
-        res.send(`User ${req.body.remove_user_name} has been removed`)
-    } catch(e){
-        res.send("Something went wrong " + e)
-    }
-})
-
 app.get('/sign_in', (req, res)=>{
     res.sendFile(__dirname + '/views/sign_in.html')
 })
@@ -93,3 +83,21 @@ app.get('/signing_in', async (req, res)=>{
     })
 })
 
+app.get('/delete_account', (req, res)=>{
+    res.sendFile(__dirname + '/views/delete_account.html')
+})
+
+
+app.post('/deleting_account', async (req, res)=>{
+    try{
+        var usr = await collection.findOne({name: req.body.name, email: req.body.email, password: req.body.pw})
+        if (!usr){
+            throw new Error('User was not found')
+        } else{
+            collection.deleteOne({name: req.body.name, email: req.body.email, password: req.body.pw})
+            res.send(`User ${req.body.name} with email address ${req.body.email} has been deleted.`)
+        }
+    } catch(e){
+        res.send(e.message)
+    }
+})

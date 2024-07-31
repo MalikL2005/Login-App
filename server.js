@@ -6,8 +6,6 @@ const {fileURLToPath} = require('url')
 const bodyParser = require('body-parser');
 
 
-//DB Link: https://cloud.mongodb.com/v2/66821979b1c025127e852e14#/metrics/replicaSet/66917f0aa266f14f1f54d0dd/explorer/sample_mflix/users/find
-//Host Link: http://localhost:8000/
 
 dotenv.config()
 const MONGO_URI = process.env.MONGO_URI
